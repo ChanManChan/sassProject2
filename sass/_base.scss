@@ -21,6 +21,10 @@ Grey dark 3: #999
   --color-primary-light: #ff3366;
   --color-primary-dark: #ba265d;
 
+  --color-sample-1: #39c9bb;
+  --color-sample-2: #227870;
+  --color-sample-3: #17544e;
+
   --color-grey-light-1: #faf9f9;
   --color-grey-light-2: #f4f2f2;
   --color-grey-light-3: #f0eeee;
@@ -57,8 +61,8 @@ body {
 
   background-image: linear-gradient(
     to right bottom,
-    var(--color-primary-light),
-    var(--color-primary-dark)
+    var(--color-sample-1),
+    var(--color-sample-3)
   );
   background-size: cover;
   background-repeat: no-repeat;

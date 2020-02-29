@@ -19,6 +19,9 @@ Grey dark 3: #999
   --color-primary: #eb2f64;
   --color-primary-light: #ff3366;
   --color-primary-dark: #ba265d;
+  --color-sample-1: #39c9bb;
+  --color-sample-2: #227870;
+  --color-sample-3: #17544e;
   --color-grey-light-1: #faf9f9;
   --color-grey-light-2: #f4f2f2;
   --color-grey-light-3: #f0eeee;
@@ -46,7 +49,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--color-grey-dark-2);
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
+  background-image: linear-gradient(to right bottom, var(--color-sample-1), var(--color-sample-3));
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh; }
@@ -64,7 +67,7 @@ body {
   font-size: 1.4rem;
   height: 7rem;
   background-color: #fff;
-  border-bottom: var(--color-grey-light-2);
+  border-bottom: 1px solid var(--color-grey-light-2);
   display: flex;
   justify-content: space-between;
   align-items: center; }
@@ -110,9 +113,11 @@ body {
       outline: none;
       width: 100%;
       background-color: var(--color-grey-light-3); }
+      .search__input:focus::-webkit-input-placeholder {
+        color: var(--color-grey-light-4); }
     .search__input::-webkit-input-placeholder {
       font-weight: 100;
-      color: var(--color-grey-light-4); }
+      color: var(--color-grey-dark-1); }
   .search__input:focus + .search__button {
     background-color: var(--color-grey-light-3); }
   .search__button {
@@ -178,7 +183,7 @@ body {
     left: 0;
     height: 100%;
     width: 3px;
-    background-color: var(--color-primary);
+    background-color: var(--color-sample-2);
     transform: scaleY(0);
     /*
     The transform-origin property allows you to change the position of transformed elements.
@@ -190,7 +195,7 @@ body {
     transform: scaleY(1);
     width: 100%; }
   .side-nav__item:active::before {
-    background-color: var(--color-primary-light); }
+    background-color: var(--color-sample-1); }
   .side-nav__link:link, .side-nav__link:visited {
     color: var(--color-grey-light-1);
     text-decoration: none;
@@ -221,7 +226,15 @@ body {
     display: block; }
 
 .overview {
-  display: flex; }
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-light-2); }
+  .overview__heading {
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem; }
   .overview__stars {
     /*flex: 1; what this means is that this flex item should grow and occupy all the available space but this isn't really ideal therefore use margin-right: auto;
     flex: 1;
@@ -229,8 +242,59 @@ body {
     this is not ideal because this element should only be the size of its content, in this case, the size of these stars and we don't  want it to have all of this size...
     So what we want is to create this space to the right here without actually stretching out this entire element. 
     */
-    margin-right: auto; }
+    margin-right: auto;
+    display: flex; }
   .overview__icon-star, .overview__icon-location {
     width: 1.75rem;
     height: 1.75rem;
     fill: var(--color-primary); }
+  .overview__location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center; }
+  .overview__icon-location {
+    margin-right: 0.5rem; }
+  .overview__rating {
+    background-color: var(--color-primary);
+    color: #fff;
+    margin-left: 3rem;
+    align-self: stretch;
+    padding: 0 2.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+  .overview__rating-average {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-bottom: -3px; }
+  .overview__rating-count {
+    font-size: 0.8rem;
+    text-transform: uppercase; }
+
+.btn-inline {
+  border: none;
+  color: var(--color-primary);
+  font-size: inherit;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  display: inline-block;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s; }
+  .btn-inline:hover {
+    color: var(--color-grey-dark-1); }
+  .btn-inline:focus {
+    outline: none;
+    animation: pulsate 1s infinite; }
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: none; }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25); }
+  100% {
+    transform: scale(1);
+    box-shadow: none; } }
