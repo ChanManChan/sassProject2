@@ -14,6 +14,13 @@
   align-items: center;
   justify-content: center;
 
+  @media only screen and (max-width: $bp-smallest) {
+    //order: 1; <--it will be the last one in the row (all the way to the end)
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
+
   &__input {
     font-family: inherit;
     font-size: inherit;
@@ -115,10 +122,25 @@
   font-size: 1.4rem;
   list-style: none;
   margin-top: 3.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display:flex;
+    margin: 0;
+  }
+
   &__item {
     position: relative;
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin: 0;
+      }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      /*we give all of this four flex items the ability to grow as much as they can and since they all have the same flex value which is one, they will all occupy the same space*/
+      flex: 1;
     }
   }
   &__item::before {
@@ -163,6 +185,15 @@
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        justify-content: center;
+        padding: 2rem;
+    }
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column;
+      padding: 1.5rem 0.5rem;
+    }
   }
   &__icon {
     width: 1.75rem;
@@ -170,6 +201,13 @@
     margin-right: 2rem;
     /*currentColor is basically just the color of the current element or the parent element*/
     fill: currentColor;
+
+    @media only screen and (max-width: $bp-small) {
+     margin-right: 0;
+     margin-bottom: .7rem;
+     width: 1.5rem;
+     height: 1.5rem;
+    }
   }
 }
 
@@ -180,6 +218,10 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
 }
 
 ////////////////////////////////////////
@@ -205,6 +247,10 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem;
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
   }
   &__stars {
     /*flex: 1; what this means is that this flex item should grow and occupy all the available space but this isn't really ideal therefore use margin-right: auto;
@@ -244,15 +290,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media only screen and (max-width: $bp-small) {
+      padding: 0 1.5rem;
+    }
   }
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -3px;
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+    }
   }
   &__rating-count {
     font-size: 0.8rem;
     text-transform: uppercase;
+    @media only screen and (max-width: $bp-small) {
+      font-size: .5rem;
+    }
   }
 }
 
@@ -332,18 +387,23 @@
     margin-right: 0.7rem;
 
     // Older browsers
-    // background-image: url(../img/chevron-thin-right.svg);
-    // background-size: cover;
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
 
     // Newer browsers - masks
     /*a mask defines an area where we can look through the element and see whats behind that element,
     basically what i'm going to do is to set the background color of this element to a solid color and then use the icon as the mask and so that we can then look through that mask basically and see the background color in the area where the icon is and everything else is covered and so its just going to be white
     */
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(../img//chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    mask-image: url(../img//chevron-thin-right.svg);
-    mask-size: cover;
+    // Feature Queries
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img//chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      mask-image: url(../img//chevron-thin-right.svg);
+      mask-size: cover;
+      background-image: none;
+    }
+    
   }
 }
 
@@ -359,6 +419,7 @@
     margin-right: auto;
   }
   &__friends {
+    display: flex;
   }
   &__photo {
     box-sizing: content-box;
@@ -368,7 +429,7 @@
     border: 3px solid #fff;
 
     &:not(:last-child) {
-      margin-right: -1.5rem;
+      margin-right: -2rem;
     }
   }
 }
@@ -385,6 +446,12 @@
   //   margin-bottom: 3.5rem;
   // }
   margin-bottom: 3.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+
   &__text {
     margin-bottom: 2rem;
     z-index: 10;
@@ -437,6 +504,11 @@
 .cta {
   padding: 3.5rem 0;
   text-align: center;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2.5rem 0;
+  }
+
   &__book-now {
     text-transform: uppercase;
     font-size: 2rem;
